@@ -1,0 +1,71 @@
+/*
+  FICHEIRO CSS PRINCIPAL
+  ----------------------
+  O Tailwind funciona em 3 camadas:
+  1. @tailwind base    → reset/normalização do browser
+  2. @tailwind components → classes reutilizáveis (opcional)
+  3. @tailwind utilities → classes utilitárias (flex, p-4, text-center, etc.)
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Camada @layer base: estilos globais mínimos
+  Mantemos isto pequeno para não aumentar o CSS final
+*/
+@layer base {
+  /* scroll-behavior smooth: navegação por âncoras (#servicos) desliza suavemente */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* focus-visible: outline só aparece com teclado, não com rato */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+}
+
+/*
+  Camada @layer components: classes personalizadas reutilizáveis
+  Equivalente a criar os teus próprios "componentes" CSS
+*/
+@layer components {
+  /*
+    sr-only (screen reader only): esconde visualmente mas mantém acessível
+    Usado no link "Saltar para o conteúdo"
+  */
+  .sr-only {
+    @apply absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .not-sr-only {
+    @apply static m-0 h-auto w-auto overflow-visible whitespace-normal p-0;
+    clip: auto;
+  }
+}
+
+/*
+  Camada @layer utilities: animações leves sem bibliotecas externas
+  prefers-reduced-motion respeita utilizadores que desactivaram animações
+*/
+@layer utilities {
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out both;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

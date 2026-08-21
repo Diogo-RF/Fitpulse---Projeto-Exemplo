@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO básico: ajuda motores de busca e partilhas em redes sociais -->
+    <meta
+      name="description"
+      content="FitPulse — ginásio local em Lisboa. Treino personalizado, aulas em grupo e ambiente acolhedor. Experimente grátis durante 7 dias."
+    />
+    <title>FitPulse | Ginásio em Lisboa</title>
+
+    <!-- Ícone simples em SVG inline evita um pedido HTTP extra -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>"
+    />
+
+    <!-- CSS principal: o Vite injeta o Tailwind compilado aqui -->
+    <script type="module" crossorigin src="./assets/main-D5-aGKUh.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/style-DR7CQfP1.js">
+    <link rel="stylesheet" crossorigin href="./assets/style-DyWJRtpb.css">
+  </head>
+
+  <body class="bg-white text-gray-900 antialiased">
+    <!--
+      SKIP LINK: atalho de acessibilidade para quem usa teclado/leitor de ecrã
+      Salta diretamente para o conteúdo principal
+    -->
+    <a
+      href="#conteudo-principal"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+    >
+      Saltar para o conteúdo
+    </a>
+
+    <!-- ==================== CABEÇALHO / NAVEGAÇÃO ==================== -->
+    <!--
+      header sticky: fica fixo no topo ao fazer scroll
+      backdrop-blur: efeito de vidro fosco moderno sem imagens pesadas
+    -->
+    <header
+      class="sticky top-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur-md"
+    >
+      <div
+        class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6"
+      >
+        <!-- Logo: texto + emoji, sem imagem externa = carregamento instantâneo -->
+        <a href="#" class="flex items-center gap-2 text-xl font-bold tracking-tight">
+          <span
+            class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white"
+            aria-hidden="true"
+            >F</span
+          >
+          FitPulse
+        </a>
+
+        <!-- Menu desktop: hidden em mobile, flex a partir de md (768px) -->
+        <nav class="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
+          <a href="#servicos" class="text-sm font-medium text-gray-600 transition hover:text-brand-600">Serviços</a>
+          <a href="#planos" class="text-sm font-medium text-gray-600 transition hover:text-brand-600">Planos</a>
+          <a href="#testemunhos" class="text-sm font-medium text-gray-600 transition hover:text-brand-600">Testemunhos</a>
+          <a href="#contacto" class="text-sm font-medium text-gray-600 transition hover:text-brand-600">Contacto</a>
+          <a href="app.html" class="text-sm font-medium text-brand-600 transition hover:text-brand-700">App Treinos</a>
+        </nav>
+
+        <!-- CTA no header: botão de conversão sempre visível -->
+        <div class="hidden md:block">
+          <a
+            href="#contacto"
+            class="rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
+          >
+            Aula experimental grátis
+          </a>
+        </div>
+
+        <!-- Botão hamburger: visível só em mobile; controlado pelo main.js -->
+        <button
+          id="menu-btn"
+          type="button"
+          class="inline-flex items-center justify-center rounded-lg p-2 text-gray-700 hover:bg-gray-100 md:hidden"
+          aria-expanded="false"
+          aria-controls="menu-mobile"
+          aria-label="Abrir menu"
+        >
+          <!-- Ícone SVG inline = sem ficheiro externo -->
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menu mobile: oculto por defeito (hidden), toggled via JavaScript -->
+      <nav
+        id="menu-mobile"
+        class="hidden border-t border-gray-100 bg-white px-4 pb-4 md:hidden"
+        aria-label="Navegação mobile"
+      >
+        <div class="flex flex-col gap-1 pt-2">
+          <a href="#servicos" class="menu-link rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-50">Serviços</a>
+          <a href="#planos" class="menu-link rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-50">Planos</a>
+          <a href="#testemunhos" class="menu-link rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-50">Testemunhos</a>
+          <a href="#contacto" class="menu-link rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-50">Contacto</a>
+          <a href="app.html" class="menu-link rounded-lg px-3 py-2 font-medium text-brand-600 hover:bg-brand-50">App Treinos</a>
+          <a
+            href="#contacto"
+            class="menu-link mt-2 rounded-full bg-brand-600 px-4 py-2.5 text-center text-sm font-semibold text-white"
+          >
+            Aula experimental grátis
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="conteudo-principal">
+      <!-- ==================== HERO ==================== -->
+      <!--
+        Secção principal: gradiente CSS puro (zero imagens = carregamento rápido)
+        grid lg:grid-cols-2 → duas colunas em ecrãs grandes, empilhado em mobile
+      -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-brand-50 via-white to-emerald-50">
+        <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24">
+          <div>
+            <!-- Badge pequeno para destacar oferta -->
+            <p class="mb-4 inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700">
+              Lisboa · Marvila
+            </p>
+
+            <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl">
+              O teu corpo.<br />
+              <span class="text-brand-600">A tua energia.</span>
+            </h1>
+
+            <p class="mt-6 max-w-lg text-lg leading-relaxed text-gray-600">
+              Ginásio de bairro com treino personalizado, aulas em grupo e ambiente acolhedor.
+              Sem contratos longos — começa hoje com 7 dias grátis.
+            </p>
+
+            <!-- Grupo de botões: primário (ação) + secundário (informação) -->
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#contacto"
+                class="rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700"
+              >
+                Marcar aula grátis
+              </a>
+              <a
+                href="#planos"
+                class="rounded-full border border-gray-200 bg-white px-7 py-3 text-sm font-semibold text-gray-800 transition hover:border-brand-300 hover:text-brand-700"
+              >
+                Ver planos
+              </a>
+            </div>
+
+            <!-- Prova social: números aumentam confiança sem carregar recursos -->
+            <dl class="mt-10 grid grid-cols-3 gap-4 border-t border-gray-200 pt-8">
+              <div>
+                <dt class="text-2xl font-bold text-gray-900">500+</dt>
+                <dd class="text-sm text-gray-500">Membros activos</dd>
+              </div>
+              <div>
+                <dt class="text-2xl font-bold text-gray-900">40+</dt>
+                <dd class="text-sm text-gray-500">Aulas por semana</dd>
+              </div>
+              <div>
+                <dt class="text-2xl font-bold text-gray-900">4.9★</dt>
+                <dd class="text-sm text-gray-500">Avaliação Google</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!--
+            Cartão visual do hero: usa gradiente + formas CSS em vez de foto pesada
+            Se quiseres uma foto real, usa loading="lazy" e width/height fixos
+          -->
+          <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+            <div
+              class="aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 to-emerald-800 shadow-2xl shadow-brand-900/20"
+              role="img"
+              aria-label="Espaço de treino moderno do ginásio FitPulse"
+            >
+              <!-- Decoração puramente visual com divs posicionadas -->
+              <div class="flex h-full flex-col justify-end p-8 text-white">
+                <p class="text-sm font-medium uppercase tracking-widest text-brand-100">Aberto todos os dias</p>
+                <p class="mt-1 text-2xl font-bold">06:00 — 22:00</p>
+                <p class="mt-4 text-sm text-brand-100">Rua das Artes 42, Lisboa</p>
+              </div>
+            </div>
+            <!-- Elemento flutuante: dá profundidade sem JavaScript -->
+            <div class="absolute -bottom-4 -left-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-gray-100">
+              <p class="text-xs font-medium text-gray-500">Próxima aula</p>
+              <p class="font-bold text-gray-900">HIIT · 18:30</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SERVIÇOS ==================== -->
+      <section id="servicos" class="bg-white py-20">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <!-- Cabeçalho de secção centrado -->
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Tudo o que precisas num só lugar
+            </h2>
+            <p class="mt-4 text-lg text-gray-600">
+              Equipamento moderno, coaches certificados e horários flexíveis para a tua rotina.
+            </p>
+          </div>
+
+          <!--
+            Grid responsivo: 1 coluna (mobile) → 2 (tablet) → 3 (desktop)
+            gap-8: espaçamento consistente entre cartões
+          -->
+          <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Cartão de serviço 1 -->
+            <article class="group rounded-2xl border border-gray-100 bg-gray-50/50 p-8 transition hover:border-brand-200 hover:shadow-lg">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-2xl" aria-hidden="true">🏋️</div>
+              <h3 class="text-lg font-bold text-gray-900">Musculação</h3>
+              <p class="mt-2 text-gray-600">
+                Zona completa com pesos livres, máquinas e acompanhamento inicial gratuito.
+              </p>
+            </article>
+
+            <article class="group rounded-2xl border border-gray-100 bg-gray-50/50 p-8 transition hover:border-brand-200 hover:shadow-lg">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-2xl" aria-hidden="true">🧘</div>
+              <h3 class="text-lg font-bold text-gray-900">Aulas em grupo</h3>
+              <p class="mt-2 text-gray-600">
+                Yoga, HIIT, cycling e pilates — inclusas em todos os planos mensais.
+              </p>
+            </article>
+
+            <article class="group rounded-2xl border border-gray-100 bg-gray-50/50 p-8 transition hover:border-brand-200 hover:shadow-lg">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-100 text-2xl" aria-hidden="true">👤</div>
+              <h3 class="text-lg font-bold text-gray-900">PT Personalizado</h3>
+              <p class="mt-2 text-gray-600">
+                Planos de treino e nutrição adaptados aos teus objectivos pessoais.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== PLANOS / PREÇOS ==================== -->
+      <section id="planos" class="bg-gray-50 py-20">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Planos simples, sem surpresas
+            </h2>
+            <p class="mt-4 text-lg text-gray-600">
+              Sem taxa de inscrição. Cancela quando quiseres.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-8 lg:grid-cols-3">
+            <!-- Plano básico -->
+            <article class="flex flex-col rounded-2xl border border-gray-200 bg-white p-8">
+              <h3 class="text-lg font-bold text-gray-900">Essencial</h3>
+              <p class="mt-1 text-sm text-gray-500">Para quem treina com autonomia</p>
+              <p class="mt-6">
+                <span class="text-4xl font-extrabold text-gray-900">29€</span>
+                <span class="text-gray-500">/mês</span>
+              </p>
+              <ul class="mt-8 flex-1 space-y-3 text-sm text-gray-600">
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> Acesso à sala de musculação</li>
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> Balneários e cacifos</li>
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> App de acompanhamento</li>
+              </ul>
+              <a href="#contacto" class="mt-8 block rounded-full border border-gray-300 py-3 text-center text-sm font-semibold transition hover:border-brand-600 hover:text-brand-600">
+                Escolher plano
+              </a>
+            </article>
+
+            <!-- Plano destacado: ring-2 + scale para chamar atenção visual -->
+            <article class="relative flex flex-col rounded-2xl border-2 border-brand-600 bg-white p-8 shadow-xl lg:scale-105">
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-600 px-3 py-1 text-xs font-bold uppercase text-white">
+                Mais popular
+              </span>
+              <h3 class="text-lg font-bold text-gray-900">Completo</h3>
+              <p class="mt-1 text-sm text-gray-500">Musculação + aulas ilimitadas</p>
+              <p class="mt-6">
+                <span class="text-4xl font-extrabold text-gray-900">49€</span>
+                <span class="text-gray-500">/mês</span>
+              </p>
+              <ul class="mt-8 flex-1 space-y-3 text-sm text-gray-600">
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> Tudo do plano Essencial</li>
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> Aulas em grupo ilimitadas</li>
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> 1 avaliação física/mês</li>
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> Convite para amigo/mês</li>
+              </ul>
+              <a href="#contacto" class="mt-8 block rounded-full bg-brand-600 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-700">
+                Escolher plano
+              </a>
+            </article>
+
+            <!-- Plano premium -->
+            <article class="flex flex-col rounded-2xl border border-gray-200 bg-white p-8">
+              <h3 class="text-lg font-bold text-gray-900">Premium</h3>
+              <p class="mt-1 text-sm text-gray-500">PT dedicado + nutrição</p>
+              <p class="mt-6">
+                <span class="text-4xl font-extrabold text-gray-900">89€</span>
+                <span class="text-gray-500">/mês</span>
+              </p>
+              <ul class="mt-8 flex-1 space-y-3 text-sm text-gray-600">
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> Tudo do plano Completo</li>
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> 4 sessões PT/mês</li>
+                <li class="flex items-center gap-2"><span class="text-brand-600">✓</span> Plano nutricional</li>
+              </ul>
+              <a href="#contacto" class="mt-8 block rounded-full border border-gray-300 py-3 text-center text-sm font-semibold transition hover:border-brand-600 hover:text-brand-600">
+                Escolher plano
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TESTEMUNHOS ==================== -->
+      <section id="testemunhos" class="bg-white py-20">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 class="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            O que dizem os nossos membros
+          </h2>
+
+          <div class="mt-14 grid gap-8 md:grid-cols-3">
+            <!-- blockquote = semântica correcta para citações -->
+            <figure class="rounded-2xl bg-gray-50 p-8">
+              <blockquote class="text-gray-700">
+                “Ambiente acolhedor e coaches que realmente se preocupam. Perdi 8 kg em 3 meses!”
+              </blockquote>
+              <figcaption class="mt-4 flex items-center gap-3">
+                <!-- Avatar com iniciais: sem imagens externas -->
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">MC</div>
+                <div>
+                  <p class="font-semibold text-gray-900">Maria Costa</p>
+                  <p class="text-sm text-gray-500">Membro há 1 ano</p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="rounded-2xl bg-gray-50 p-8">
+              <blockquote class="text-gray-700">
+                “As aulas de HIIT são incríveis. Horários flexíveis encaixam na minha rotina de trabalho.”
+              </blockquote>
+              <figcaption class="mt-4 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">JS</div>
+                <div>
+                  <p class="font-semibold text-gray-900">João Silva</p>
+                  <p class="text-sm text-gray-500">Membro há 6 meses</p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure class="rounded-2xl bg-gray-50 p-8">
+              <blockquote class="text-gray-700">
+                “Finalmente um ginásio de bairro sem pressão. Sinto-me em casa aqui.”
+              </blockquote>
+              <figcaption class="mt-4 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white" aria-hidden="true">AF</div>
+                <div>
+                  <p class="font-semibold text-gray-900">Ana Ferreira</p>
+                  <p class="text-sm text-gray-500">Membro há 2 anos</p>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CONTACTO / CTA FINAL ==================== -->
+      <section id="contacto" class="bg-brand-900 py-20 text-white">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+          <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+                Começa a tua transformação hoje
+              </h2>
+              <p class="mt-4 text-lg text-brand-100">
+                Preenche o formulário e recebe 7 dias de acesso grátis. Sem cartão de crédito.
+              </p>
+
+              <!-- Informação de contacto estática (sem mapa embed = mais rápido) -->
+              <address class="mt-8 space-y-2 not-italic text-brand-100">
+                <p>📍 Rua das Artes 42, 1900-123 Lisboa</p>
+                <p>📞 <a href="tel:+351912345678" class="underline hover:text-white">+351 912 345 678</a></p>
+                <p>✉️ <a href="mailto:ola@fitpulse.pt" class="underline hover:text-white">ola@fitpulse.pt</a></p>
+              </address>
+            </div>
+
+            <!--
+              Formulário: preventDefault no JS evita reload da página
+              Em produção, ligarias isto a um backend ou serviço como Formspree
+            -->
+            <form id="form-contacto" class="rounded-2xl bg-white p-8 text-gray-900 shadow-xl" novalidate>
+              <div class="space-y-4">
+                <div>
+                  <label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    required
+                    autocomplete="name"
+                    class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                    placeholder="O teu nome"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    autocomplete="email"
+                    class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                    placeholder="nome@email.com"
+                  />
+                </div>
+                <div>
+                  <label for="telefone" class="block text-sm font-medium text-gray-700">Telefone</label>
+                  <input
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    autocomplete="tel"
+                    class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                    placeholder="+351 912 345 678"
+                  />
+                </div>
+              </div>
+
+              <!-- Mensagem de sucesso: oculta por defeito, mostrada pelo JS -->
+              <p id="form-sucesso" class="mt-4 hidden rounded-lg bg-brand-50 p-3 text-sm text-brand-800" role="status">
+                Obrigado! Entraremos em contacto em breve.
+              </p>
+
+              <button
+                type="submit"
+                class="mt-6 w-full rounded-full bg-brand-600 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
+              >
+                Quero os 7 dias grátis
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer class="border-t border-gray-100 bg-white py-10">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6">
+        <p class="text-sm text-gray-500">
+          © 2026 FitPulse Ginásio. Todos os direitos reservados.
+        </p>
+        <nav class="flex gap-6 text-sm text-gray-500" aria-label="Links legais">
+          <a href="#" class="hover:text-brand-600">Privacidade</a>
+          <a href="#" class="hover:text-brand-600">Termos</a>
+          <a href="#" class="hover:text-brand-600">Instagram</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- JavaScript: carregado no fim do body para não bloquear a renderização -->
+  </body>
+</html>
